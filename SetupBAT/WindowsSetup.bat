@@ -1,4 +1,7 @@
 @echo off
+REM 一番最初に起動した時に作るユーザ名を設定する(setupという名前以外でユーザを作るなら↓は書き換える)
+SET SETUP_USER=setup
+
 REM 右クリックして管理者として実行してない場合は終了させる
 openfiles > NUL 2>&1 
 if NOT %ERRORLEVEL% EQU 0 goto NotAdmin 
@@ -25,15 +28,20 @@ REM PC名の設定 #####################################################
 
 :Setting1
 REM 最初に作ったユーザでセットアップを進める部分
+REM ADにJoinする為のユーザやファイルサーバのアクセス権限のあるユーザのログイン情報を入力する
+echo セットアップに必要な情報を入力して下さい
+set /P DOMAIN_ADMINUSER=ADにPCを追加出来る権限のあるユーザ名:
+set /P DOMAIN_ADMINPASS=↑のユーザのパスワード:
+
+REM ActiveDirectoryにPCを参加させる
+
 
 echo 何かエラーがあれば画面を閉じずに管理者にお知らせ下さい
 goto EOS
 
 :Setting2
 REM セットアップ中に作成したユーザもしくはADに登録されているユーザでセットアップを進める部分
-
-
-
+REM ZoomやTeamsをインストールしておく必要があるならこちらで実行する必要がある
 
 echo 何かエラーがあれば画面を閉じずに管理者にお知らせ下さい
 goto EOS

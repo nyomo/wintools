@@ -30,12 +30,13 @@ REM PC名の設定 #####################################################
 :Setting1
 REM 最初に作ったユーザでセットアップを進める部分
 REM ADにJoinする為のユーザやファイルサーバのアクセス権限のあるユーザのログイン情報を入力する
+SET DOMAIN_NAME=hogehoge
 echo セットアップに必要な情報を入力して下さい
 set /P DOMAIN_ADMINUSER=ADにPCを追加出来る権限のあるユーザ名:
 set /P DOMAIN_ADMINPASS=↑のユーザのパスワード:
 
 REM ActiveDirectoryにPCを参加させる
-
+netdom join %PCNAME% /domain:%DOMAIN_NAME% /ud:%DOMAIN_ADMINUSER% /pd:%DOMAIN_ADMINPASS%
 shutdown /r /t 0
 
 echo 何かエラーがあれば画面を閉じずに管理者にお知らせ下さい

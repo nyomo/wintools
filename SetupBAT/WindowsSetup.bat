@@ -23,6 +23,7 @@ IF %PCNAME%==%NEWPCNAME% GOTO Setting1
 REM 設定したいPC名と現在のPC名が違って居る場合は再起動する
 echo PC名を設定します、何かキーを押すと再起動します(CTRL+Cでキャンセル)
 pause >NUL
+wmic computersystem where name="%PCNAME%" call rename name="%NEWPCNAME%"
 shutdown /s /t 0
 REM PC名の設定 #####################################################
 
@@ -35,6 +36,7 @@ set /P DOMAIN_ADMINPASS=↑のユーザのパスワード:
 
 REM ActiveDirectoryにPCを参加させる
 
+shutdown /r /t 0
 
 echo 何かエラーがあれば画面を閉じずに管理者にお知らせ下さい
 goto EOS

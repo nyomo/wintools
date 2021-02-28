@@ -34,6 +34,12 @@ SET DOMAIN_NAME=hogehoge
 echo セットアップに必要な情報を入力して下さい
 set /P DOMAIN_ADMINUSER=ADにPCを追加出来る権限のあるユーザ名:
 set /P DOMAIN_ADMINPASS=↑のユーザのパスワード:
+set /P LOCAL_ADMIN_PASS=ローカルのadministratorアカウントに設定するパスワード: 
+
+
+REM administratorアカウントを有効化しないなら消す
+echo administratorアカウント有効化
+net user administrator %LOCAL_ADMIN_PASS% /active:yes
 
 REM ActiveDirectoryにPCを参加させる
 netdom join %PCNAME% /domain:%DOMAIN_NAME% /ud:%DOMAIN_ADMINUSER% /pd:%DOMAIN_ADMINPASS%

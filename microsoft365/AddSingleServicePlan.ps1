@@ -20,7 +20,7 @@ function EnableApp{
   # ライセンスオプションを設定
   $LO = New-MsolLicenseOptions -AccountSkuId $AccountSkuId -DisabledPlans $DisabledPlans
   # ライセンスをユーザに適用
-  # Set-MsolUserLicense -UserPrincipalName $User -LicenseOptions $LO
+  Set-MsolUserLicense -UserPrincipalName $User -LicenseOptions $LO
 }
 
 

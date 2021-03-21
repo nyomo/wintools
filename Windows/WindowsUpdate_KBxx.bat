@@ -5,7 +5,7 @@ REM 管理者として実行する必要がある
 openfiles > NUL 2>&1 
 if NOT %ERRORLEVEL% EQU 0 goto NotAdmin 
 
-REM Windowsのバージョンチェック 7〜10
+REM Windowsのバージョンチェック 7~10
 ver | find /i "Version 6.1." > nul
 if %ERRORLEVEL% equ 0 GOTO :WIN7
 ver | find /i "Version 6.2." > nul
@@ -58,7 +58,7 @@ ver | find /i "19042" > nul
 if %ERRORLEVEL% equ 0 GOTO :X20H2
 goto :XOTHER
 
-REM Windows10の各バージョン(1709〜20H2)
+REM Windows10の各バージョン(1709~20H2)
 :X1709
 echo.
 echo この端末の OS は "Windows 10 1709です"
